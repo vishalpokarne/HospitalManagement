@@ -1,0 +1,10 @@
+{
+    "/authentication": {
+        "target": "http://localhost:8080/authentication",
+        "secure": false
+    },
+    "/appointment":{
+        "target": "http://localhost:8080/appointment",
+        "secure": false
+    }
+}

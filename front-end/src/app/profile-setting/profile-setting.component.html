@@ -1,0 +1,71 @@
+<form #UserDetailsForm="ngForm" (ngSubmit)="UserDetailsForm.form.valid && onUpdateUserDetails(UserDetailsForm)">
+    <div class="form-group">
+        <label for="firstnameField">First Name</label>
+        <input type="email" 
+            class="form-control" 
+            id="firstnameField" 
+            placeholder="Enter First Name"
+            name="firstname"
+            #name="ngModel"
+            [(ngModel)]="userdetails.firstname" 
+            [ngClass]="{ 'is-invalid': UserDetailsForm.submitted && name.invalid }" 
+            required>
+            <div class="invalid-feedback" *ngIf="UserDetailsForm.submitted && name.invalid">
+                <p *ngIf="name.errors.required">Firstname required</p>
+            </div>
+    </div>
+    <div class="form-group">
+        <label for="lastnameField">Lastname</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="lastnameField" 
+            placeholder="Enter Last Name"
+            name="lastname"
+            #name="ngModel"
+            [(ngModel)]="userdetails.lastname"
+            [ngClass]="{ 'is-invalid': UserDetailsForm.submitted && name.invalid }"
+            required>
+        <div class="invalid-feedback" *ngIf="UserDetailsForm.submitted && name.invalid">
+            <p *ngIf="name.errors.required">Lastname required</p>
+        </div>
+    </div>
+
+    <label class="my-1 mr-2" for="usertypeField">User type</label>
+    <select class="custom-select my-1 mr-sm-2" name="type"  id="usertypeField" [(ngModel)]="userdetails.type">
+        <option value="doctor">Doctor</option>
+        <option value="patient">Patient</option>
+    </select>
+    
+    <div class="form-group">
+        <label for="usernameField">Username</label>
+        <input type="text" 
+            class="form-control" 
+            id="usernameField" 
+            placeholder="Enter Username"
+            name="Username"
+            #name="ngModel"
+            [(ngModel)]="userdetails.username" 
+            [ngClass]="{ 'is-invalid': UserDetailsForm.submitted && name.invalid }"
+            required>
+    <div class="invalid-feedback" *ngIf="UserDetailsForm.submitted && name.invalid">
+        <p *ngIf="name.errors.required">Username required</p>
+    </div>
+    </div>
+    <div class="form-group">
+        <label for="emailField">Email address</label>
+        <input type="email" 
+            class="form-control" 
+            id="emailField" 
+            placeholder="Enter email"
+            name="email"
+            #name="ngModel"
+            [(ngModel)]="userdetails.email" 
+            [ngClass]="{ 'is-invalid': UserDetailsForm.submitted && name.invalid }"
+            required>
+        <div class="invalid-feedback" *ngIf="UserDetailsForm.submitted && name.invalid">
+            <p *ngIf="name.errors.required">Email address required</p>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>

@@ -1,0 +1,30 @@
+version: '3'
+services:
+  mongo:
+    container_name: 'mongo_container'
+    image: mongo
+    ports:
+      - '27017:27017'
+  rest_api:
+    container_name: 'rest_api_container'
+    restart: always
+    build: 
+     context: ./back-end/
+     dockerfile: Dockerfile
+    image: rest_api
+    ports:
+      - '8080:8080'
+    depends_on:
+      - mongo
+  front_app:
+    container_name: 'front_app_container'
+    restart: on-failure
+    build: 
+     context: ./front-end/
+     dockerfile: Dockerfile
+    image: front_app
+    stdin_open: true
+    ports:
+      - '4200:4200'
+    links:
+      - rest_api

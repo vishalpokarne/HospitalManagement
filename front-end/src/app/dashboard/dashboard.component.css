@@ -1,0 +1,32 @@
+.sidebar{
+    min-height: 100vh;
+    min-width: 20%;
+    background-color: rgba(35, 42, 58);
+}
+.content {
+    width: 100%;
+}
+button{
+    color:white;
+    width:80%;
+    height: 40px;
+    display: block;
+    margin: 5px auto;
+    text-align: center;
+    background-color: transparent;
+}
+button:hover{
+    background-color: white;
+    color: rgba(35, 42, 58);
+}
+.links{
+    margin-top: 50px;
+}
+h3{
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+}
+.content {
+    padding: 50px;
+}

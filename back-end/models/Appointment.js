@@ -1,0 +1,13 @@
+const mongoose = require('mongoose')
+
+const AppointmentSchema = new mongoose.Schema({
+    date: { type: String, required: true},
+    createdAt: { type: String, required: true},
+    createdBy: { type: String, required: true},
+    name: { type: String, required: true},
+    email: { type: String, required: true}
+});
+
+const Appointmet = mongoose.model('Appointment', AppointmentSchema);
+
+module.exports = Appointmet;

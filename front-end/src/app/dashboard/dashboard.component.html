@@ -1,0 +1,16 @@
+<div class="d-flex" id="wrapper">
+    <div class="sidebar">
+      <div>
+        <h3>Hello {{ name }}</h3>
+        <div class="links">
+          <button routerLink="appointments">Appointments</button>
+          <button routerLink="profile_setting">Profile Settings</button>
+          <button (click)="onLogout()">Logout</button>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+

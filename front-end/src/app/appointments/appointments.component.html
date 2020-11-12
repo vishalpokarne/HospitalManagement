@@ -1,0 +1,75 @@
+<button *ngIf="userType !== 'doctor'" (click) = "onCreateAppointmentButton()" class="btn btn-primary">{{ buttonLabel }}</button>
+<form *ngIf="showFormStatus" #appointmentForm="ngForm" (ngSubmit)="appointmentForm.form.valid && onAppointmentCreate(appointmentForm)">
+    <div class="form-group">
+      <label for="dateField">Date</label>
+      <input type="text" 
+        class="form-control" 
+        id="dateField" 
+        placeholder="Enter date in dd/mm/yyyy format" 
+        name="date" 
+        [(ngModel)]="appointment.date" 
+        #name="ngModel"
+        [ngClass]="{ 'is-invalid': appointmentForm.submitted && name.invalid }" 
+        required>
+      <div class="invalid-feedback" *ngIf="appointmentForm.submitted && name.invalid">
+        <p *ngIf="name.errors.required">Plese provide date</p>
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="nameField">Name</label>
+        <input type="text" 
+          class="form-control" 
+          id="nameField" 
+          placeholder="Enter Name" 
+          name="name" 
+          [(ngModel)]="appointment.name" 
+          #name="ngModel"
+          [ngClass]="{ 'is-invalid': appointmentForm.submitted && name.invalid }"
+          required>
+        <div class="invalid-feedback" *ngIf="appointmentForm.submitted && name.invalid">
+          <p *ngIf="name.errors.required">Please provide name</p>
+        </div>
+    </div>
+    <div class="form-group">
+    <label for="emailField">Email</label>
+    <input type="text" 
+        class="form-control" 
+        id="emailField" 
+        placeholder="Enter Email" 
+        name="email" 
+        [(ngModel)]="appointment.email" 
+        #name="ngModel"
+        [ngClass]="{ 'is-invalid': appointmentForm.submitted && name.invalid }"
+        required>
+    <div class="invalid-feedback" *ngIf="appointmentForm.submitted && name.invalid">
+        <p *ngIf="name.errors.required">Please provide email</p>
+    </div>
+      </div>
+    <button class="btn btn-primary">Submit</button>
+  </form>
+
+<table>
+    <th>Date</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Action</th>
+    <tr *ngFor="let appointment of appointments">
+        <td>{{ appointment.date}}</td>
+        <td>{{ appointment.name }}</td>
+        <td>{{ appointment.email }}</td>
+        <td><button class="btn btn-primary" (click) ="onAppointmetDelete(appointment._id)">Delete</button></td>
+    </tr>
+</table>
+
+<br/><br/>
+<nav aria-label="Page navigation example" style="float: right;">
+  <ul class="pagination">
+    <li *ngFor="let pageNo of createPaginationRange(totalPages)"
+      [ngClass]="{'page-item active':pageNo === activePage}" >
+        <a class="page-link" (click) = "onPageClick(pageNo)">{{pageNo}}</a>
+    </li>
+  </ul>
+</nav>
+
+
+
